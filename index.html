@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640" />
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen"/>
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)"/>
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>Sublimeapex by xjsender</title>
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/xjsender/SublimeApex">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Sublimeapex</h1>
+            <h2>Sublime Text 3, Salesforce IDE, Force.com Develop Plugin, Tooling API, Python</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/xjsender/SublimeApex/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/xjsender/SublimeApex/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <h1>
+<a name="sublime-ide-for-salesforce" class="anchor" href="#sublime-ide-for-salesforce"><span class="octicon octicon-link"></span></a>Sublime IDE for salesforce</h1>
+
+<p>This plugin supports <code>Sublime Text 3</code> for windows and OSX, not tested for Linux.</p>
+
+<h1>
+<a name="change-logs" class="anchor" href="#change-logs"><span class="octicon octicon-link"></span></a>Change Logs:</h1>
+
+<p>See <a href="https://github.com/xjsender/SublimeApex/blob/master/HISTORY.rst">History</a></p>
+
+<h1>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h1>
+
+<p>This plugin is hosted on <a href="https://sublime.wbond.net/packages/Salesforce%20IDE">package control</a>, you can install this plugin by searching <code>Salesforce IDE</code> in package control</p>
+
+<h1>
+<a name="project-configuration" class="anchor" href="#project-configuration"><span class="octicon octicon-link"></span></a>Project Configuration</h1>
+
+<p>If your operation system is <strong>OSX</strong>, you must set the workspace in <code>SublimeApex &gt; Setting &gt; Setting - User</code>.</p>
+
+<p>There is a default test org in this plugin, you can see it by clicking <code>SublimeApex &gt; Switch Project</code> in the main menu, however, if you want to use this plugin in your own org, you need to configure your org user confidential before new project</p>
+
+<p>In order to prevent plugin update overriding your settings, you should keep your customize settings into <code>Setting - User</code> by clicking <code>SublimeApex &gt; Settings &gt; Setting - User</code>.
+re
+You can setup your projects follow below sample by clicking <code>SublimeApex &gt; Settings &gt; Setting - User</code> in the main menu, projects must be included in {}.</p>
+
+<p>When you initiate your settings, you can have more than one project in "projects", however, only one project default should be true.</p>
+
+<p>If your own org login need security token, just set it as sample.</p>
+
+<p>Every time you want to switch the project, you can click <code>SublimeApex &gt; Switch Project</code> in the main menu and choose that you want, and then the updated projects settings will be saved to user settings.</p>
+
+<p>If you want to check the current active project, you can check the most left of side bar or press <code>alt+s</code></p>
+
+<p>After your project configuration is finished, you can click <code>SublimeApex &gt; new project</code> in the main menu to download your code.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="p">{</span>
+    <span class="c1">// In OSX, the worspace path is different with windows,</span>
+    <span class="c1">// for example, workspace in OSX could be "/Users/&lt;Your User&gt;/salesforce/workspace"</span>
+    <span class="s2">"workspace"</span><span class="o">:</span> <span class="s2">"d:/ForcedotcomWorkspace"</span><span class="p">,</span>
+    <span class="s2">"projects"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"Project1 Name"</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">"default"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">"login_url"</span><span class="o">:</span> <span class="s2">"https://test.salesforce.com"</span><span class="p">,</span>
+            <span class="s2">"password"</span><span class="o">:</span> <span class="s2">"a"</span><span class="p">,</span>
+            <span class="s2">"username"</span><span class="o">:</span> <span class="s2">"a@a.com"</span><span class="p">,</span>
+            <span class="c1">// If you have security token, just put it here</span>
+            <span class="s2">"security_token"</span><span class="o">:</span> <span class="s2">"12sad3223adfas"</span>
+        <span class="p">},</span>
+        <span class="s2">"Project2 Name"</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">"default"</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">"login_url"</span><span class="o">:</span> <span class="s2">"https://test.salesforce.com"</span><span class="p">,</span>
+            <span class="s2">"password"</span><span class="o">:</span> <span class="s2">"b"</span><span class="p">,</span>
+            <span class="s2">"username"</span><span class="o">:</span> <span class="s2">"b@b.com"</span>
+        <span class="p">}</span>
+        <span class="p">......</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2>
+<a name="new-project" class="anchor" href="#new-project"><span class="octicon octicon-link"></span></a>New Project</h2>
+
+<ul>
+<li>You need to choose which pre-defined org to start new project</li>
+<li>This command is used to download or update your project</li>
+<li>Once you click this command and choose a project setting,  a new project will be downloaded and appeared in the sidebar</li>
+<li>Just after new project is finished, sobject completions will work</li>
+<li>Project Folder Name Convention: the project name set in user settings append with date literal of today, for example,
+if today is <code>2013/07/30</code> and user settings is </li>
+</ul><div class="highlight highlight-javascript"><pre><span class="p">{</span>
+    <span class="c1">// Workspace in OSX is different with windows, </span>
+    <span class="c1">// workspace can be "/Users/&lt;Your User&gt;/salesforce/workspace"</span>
+    <span class="s2">"workspace"</span><span class="o">:</span> <span class="s2">"d:/ForcedotcomWorkspace"</span><span class="p">,</span>
+    <span class="s2">"projects"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"Exercise-Pro"</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">"default"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">"login_url"</span><span class="o">:</span> <span class="s2">"https://login.salesforce.com"</span><span class="p">,</span>
+            <span class="s2">"password"</span><span class="o">:</span> <span class="s2">"******"</span><span class="p">,</span>
+            <span class="s2">"username"</span><span class="o">:</span> <span class="s2">"mouse@exercise.com"</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>your project folder name should be <code>Exercise-Pro-20130730</code>, you can close this time suffix feature by setting <code>keep_project_name_time_suffix</code> to false</p>
+
+<h3>
+<a name="update-project" class="anchor" href="#update-project"><span class="octicon octicon-link"></span></a>Update Project</h3>
+
+<p>You can press <code>Alt+f7</code> to update your active project</p>
+
+<h2>
+<a name="completions" class="anchor" href="#completions"><span class="octicon octicon-link"></span></a>Completions:</h2>
+
+<ul>
+<li>1. <code>Input .</code>, show all methods of class</li>
+<li>2. <code>Input .</code>, show all fields, parent relationship name and child relationship names</li>
+<li>3. <code>Input .</code> after sobject relationship name, show all fields of this relationship name</li>
+<li>4. <code>Input .</code>, show all public methods of custom class if corresponding class view is open</li>
+<li>5. <code>Input English Character</code>, show all sobject name and standard class name</li>
+<li>6. <code>input &lt;</code>, list all tag, including Visualforce Components and HTML Elements</li>
+<li>7. <code>input :</code>, list all suffix of all visualforce Components</li>
+<li>8. <code>input space</code>, list all attributes of tags</li>
+<li>9. <code>input =</code>, list all values of this corresponding attributes in Visualforce page</li>
+<li>10. If sobject field type is picklist, after you input <code>opp.StageName =</code> or <code>Opportunity.StageName =</code>, all available picklist values will be shown</li>
+</ul><h3>
+<a name="completions-screenshots" class="anchor" href="#completions-screenshots"><span class="octicon octicon-link"></span></a>Completions Screenshots</h3>
+
+<p><img src="https://raw.github.com/xjsender/SublimeApexScreenshot/master/apex.jpg"><br><img src="https://raw.github.com/xjsender/SublimeApexScreenshot/master/page.png"><br></p>
+
+<h2>
+<a name="execute-anonymous" class="anchor" href="#execute-anonymous"><span class="octicon octicon-link"></span></a>Execute Anonymous</h2>
+
+<p>Choose any apex code snippet, press <code>Ctrl+Alt+E</code> or click <code>SublimeApex &gt; Execute Anonymous</code>, the executed result will be shown in a new view.</p>
+
+<p>There has a <code>log_levels</code> setting in the default setting, If you want to change anonymous log levels, you can put your log levels settings into your user setting.</p>
+
+<p><strong>If your chosen code snippet contains non-english word, there will have problem.</strong></p>
+
+<h2>
+<a name="execute-query" class="anchor" href="#execute-query"><span class="octicon octicon-link"></span></a>Execute Query</h2>
+
+<p>After any snippet which start with SELECT is chosen, you can press <code>Ctrl+Alt+Q</code> or click <code>SublimeApex &gt; Execute Query</code>, the queried json result will be formated and shown in a new view.</p>
+
+<h2>
+<a name="save-component" class="anchor" href="#save-component"><span class="octicon octicon-link"></span></a>Save component</h2>
+
+<ul>
+<li>This command is only enabled in salesforce code file</li>
+<li>After code is updated, click <code>SublimeApex &gt; Save to Server</code> or press <code>Ctrl+Alt+S</code>
+</li>
+</ul><h2>
+<a name="refresh-component" class="anchor" href="#refresh-component"><span class="octicon octicon-link"></span></a>Refresh component</h2>
+
+<ul>
+<li>This command is only enabled in salesforce code file</li>
+<li>After code is updated in UI or other IDE, press <code>Ctrl+Alt+R</code> or click <code>SublimeApex &gt; Refresh From Server</code> to refresh it server.</li>
+</ul><h2>
+<a name="delete-component" class="anchor" href="#delete-component"><span class="octicon octicon-link"></span></a>Delete component</h2>
+
+<ul>
+<li>This command is only enabled in salesforce code file</li>
+<li>If component is useless and you want to delete it from server, click <code>SublimeApex &gt; Delete From Server</code>
+</li>
+</ul><h2>
+<a name="new-apexclass" class="anchor" href="#new-apexclass"><span class="octicon octicon-link"></span></a>New ApexClass</h2>
+
+<p>Click <code>SublimeApex &gt; New &gt; New ApexClass</code>, choose the predefined template, and then input the class name in the input panel at the bottom, after that, your class will be created.</p>
+
+<h2>
+<a name="new-apexpage" class="anchor" href="#new-apexpage"><span class="octicon octicon-link"></span></a>New ApexPage</h2>
+
+<p>Click <code>SublimeApex &gt; New &gt; New ApexPage</code>, choose the predefined template (Just have only one template now), and then input the page name in the input panel at the bottom, after that, your page will be created.</p>
+
+<h2>
+<a name="new-apexcomponent" class="anchor" href="#new-apexcomponent"><span class="octicon octicon-link"></span></a>New ApexComponent</h2>
+
+<p>Click <code>SublimeApex &gt; New &gt; New ApexComponent</code>, choose the predefined template (Just have only one template now), and then input the component name in the input panel at the bottom, after that, your component will be created.</p>
+
+<h2>
+<a name="new-apextrigger" class="anchor" href="#new-apextrigger"><span class="octicon octicon-link"></span></a>New ApexTrigger</h2>
+
+<p>Click <code>SublimeApex &gt; New &gt; New ApexTrigger</code>, choose the sobject on which you will create trigger, and then input the trigger name in the input panel at the bottom, after that, your trigger will be created.</p>
+
+<h2>
+<a name="create-debug-log" class="anchor" href="#create-debug-log"><span class="octicon octicon-link"></span></a>Create Debug Log</h2>
+
+<p>If you want to track the log of any user, click <code>SublimeApex &gt; Apex Test &gt; Create Debug Log</code>, wait for a moment, you will see the user list, choose one and press enter, check the progress in the status bar until succeed message appeared, and then your debug log user is recorded.</p>
+
+<h2>
+<a name="list-debug-log" class="anchor" href="#list-debug-log"><span class="octicon octicon-link"></span></a>List Debug Log</h2>
+
+<p>If you want to see the log list of any user, click <code>SublimeApex &gt; Apex Test &gt; List Debug Logs</code>, wait for a moment, you will see the user list, choose one and press enter, check the progress in the status bar until succeed message appeared, and then a new view with the log list will be open.</p>
+
+<p>You can choose the <code>Log Id</code> and click <code>SublimeApex &gt; View Debug Log In Sublime</code> command in the context menu, wait for the end of the progress on the status bar, after it is finished, a new view with the log detail will be opened.</p>
+
+<p>Or, you can choose any Log Id and click <code>SublimeApex &gt; View Id In Salesforce Web</code>, wait for a moment, browser will be open and redirect to the log detail page.</p>
+
+<h2>
+<a name="run-test" class="anchor" href="#run-test"><span class="octicon octicon-link"></span></a>Run Test</h2>
+
+<p>There are two methods to run test, one is by Main Menu, other is in the context menu</p>
+
+<ul>
+<li>1. By Main Menu: click <code>SublimeApex &gt; Apex Test &gt; Run Test</code>, choose the test class and press enter, check the progress in the status bar until succeed message appeared, and then a new view with the test result will be open.</li>
+<li>2. By Context Menu: in the context of opened class, click <code>SublimeApex &gt; Run Test Class</code>, check the progress in the status bar until succeed message appeared, and then a new view with the test result will be open.</li>
+</ul><h2>
+<a name="view-code-coverage" class="anchor" href="#view-code-coverage"><span class="octicon octicon-link"></span></a>View Code Coverage</h2>
+
+<p>This feature just works when api version is &gt;= 29.0
+In the context menu of open class or trigger, click <code>SublimeApex &gt; View Code Coverage</code> in the context menu, ait for the end of the progress on the status bar, you will see the code coverage percentage in the console and a new view with not covered highlight lines.</p>
+
+<h2>
+<a name="refresh-folder" class="anchor" href="#refresh-folder"><span class="octicon octicon-link"></span></a>Refresh Folder</h2>
+
+<p>Click the folder in the side bar, refresh that you want to refresh, if you choose the classes folder, the <code>Refresh ApexClass</code> command will be visible, <code>ApexTrigger</code>, <code>ApexComponent</code>, <code>ApexPage</code> and <code>StaticResource</code> is same.</p>
+
+<h2>
+<a name="salesforce-document-quick-reference" class="anchor" href="#salesforce-document-quick-reference"><span class="octicon octicon-link"></span></a>Salesforce Document Quick Reference</h2>
+
+<p>I forked this idea from <a href="https://github.com/Oblongmana/sublime-salesforce-reference">Salesforce Referencee</a> and added some feature based on it.</p>
+
+<p>Click the <code>SublimeApex &gt; Reference &gt; Reload Salesforce Reference</code> in the main menu, wait for a moment until the <code>Open Document</code> command is enabled, at this moment, you can press <code>Ctrl+Shift+O</code> or Click it to invoke the <code>Open Document</code> command, nearly all reference api will be shown in the list, you can try to choose any one and it will be opened in browser.</p>
+
+<h2>
+<a name="refresh-multiply-components" class="anchor" href="#refresh-multiply-components"><span class="octicon octicon-link"></span></a>Refresh Multiply Components</h2>
+
+<p>Choose the components you want to refresh, and then Click <code>SublimeApex &gt; Refresh Selected Components</code> in the Sidebar Menu</p>
+
+<h2>
+<a name="delete-multiply-components" class="anchor" href="#delete-multiply-components"><span class="octicon octicon-link"></span></a>Delete Multiply Components</h2>
+
+<p>Choose the components you want to delete, and then Click <code>SublimeApex &gt; Delete Selected Components</code> in the Sidebar Menu</p>
+
+<h2>
+<a name="quick-goto-component" class="anchor" href="#quick-goto-component"><span class="octicon octicon-link"></span></a>Quick Goto Component</h2>
+
+<p>Put the focus in the Class Name, and then, press <code>shift</code>,  and click <code>button1</code> for twice, the class file will be open in background if this class file is exist, however, if you want to open this class in the foreground, you should press <code>shift</code> and click <code>button1</code> for triple.</p>
+
+<h2>
+<a name="retrieve-all-metadata" class="anchor" href="#retrieve-all-metadata"><span class="octicon octicon-link"></span></a>Retrieve All Metadata</h2>
+
+<p>Click <code>SublimeApex &gt; Retrieve Metadata</code> in the main menu, you will see a new open view with message, this view will be refreshed every five seconds, after the retrieve status is completed, plug-in will download the base64 zipfile, after that, base64 zipfile will be decoded to zip file, at the last, this zip file will be extracted.</p>
+
+<h2>
+<a name="deploy-metadata" class="anchor" href="#deploy-metadata"><span class="octicon octicon-link"></span></a>Deploy Metadata</h2>
+
+<p>This functionality is not perfect now, but it can work now.</p>
+
+<h2>
+<a name="export-workflow-rules" class="anchor" href="#export-workflow-rules"><span class="octicon octicon-link"></span></a>Export Workflow Rules</h2>
+
+<p>After you downloaded all metadata by clicking <code>SublimeApex &gt; Migration &gt; Retrieve Metadata</code>, you can click <code>SublimeApex &gt; Export &gt; Export Workflow</code> to backup all workflows in your org to csv.</p>
+
+<h2>
+<a name="export-validation-rules" class="anchor" href="#export-validation-rules"><span class="octicon octicon-link"></span></a>Export Validation Rules</h2>
+
+<p>After you downloaded all metadata by clicking <code>SublimeApex &gt; Migration &gt; Retrieve Metadata</code>, you can click <code>SublimeApex &gt; Export &gt; Export Validation Rule</code> to backup all validation rules in your org to csv.</p>
+
+<h2>
+<a name="export-customfields" class="anchor" href="#export-customfields"><span class="octicon octicon-link"></span></a>Export CustomFields</h2>
+
+<p>You can click <code>SublimeApex &gt; Export &gt; Export CustomFields</code> to export all custom fields in your org to csv.</p>
+
+<h2>
+<a name="export-workbook-of-sobjects" class="anchor" href="#export-workbook-of-sobjects"><span class="octicon octicon-link"></span></a>Export Workbook of sobjects</h2>
+
+<p>You can click <code>SublimeApex &gt; Export &gt; Export Workbook</code> to export all sobject workbooks in your org to csv.
+If you just want to export some attributes of sobject workbook, you can do it by setting workbook_field_describe_columns in ```SublimeApex &gt; Settings &gt; Setting - User.</p>
+
+<h2>
+<a name="export-available-picklist-values-of-record-type" class="anchor" href="#export-available-picklist-values-of-record-type"><span class="octicon octicon-link"></span></a>Export Available Picklist Values of Record Type</h2>
+
+<p>You can click <code>SublimeApex &gt; Describe &gt; Describe Layout</code> to export the available picklist values of RecordType</p>
+
+<h2>
+<a name="exceute-rest-test" class="anchor" href="#exceute-rest-test"><span class="octicon octicon-link"></span></a>Exceute Rest Test</h2>
+
+<p>Up to now, support Head, Get, Post, Delete and Retrieve Body Methods, for example, Input <code>/sobjects/Account/Describe</code> and click <code>SublimeApex&gt; Execute Rest Test</code> in the context menu or press <code>F9</code>, context dynamic menu will show up, you can choose GET to retrieve Account Describe Result in the new view.</p>
+
+<h2>
+<a name="export-data-template" class="anchor" href="#export-data-template"><span class="octicon octicon-link"></span></a>Export Data Template</h2>
+
+<p>Click <code>SublimeApex &gt; Export &gt; Export Data Template</code>, wait for a moment, choose the record type of sobject, the sobject data template by record type will be exported</p>
+
+<h2>
+<a name="bulk-api" class="anchor" href="#bulk-api"><span class="octicon octicon-link"></span></a>Bulk Api</h2>
+
+<ul>
+<li>Up to now, support export, insert, update and delete.</li>
+<li>You can set the batch size and batch bytes for every batch by put <code>maximum_batch_size</code> and <code>maximum_batch_bytes</code> in your user settings, you should be aware, maximum records of single batch is <strong>10K</strong> and maximum bytes of single batch is <strong>1000K</strong>
+</li>
+<li>This tool will get your CSV file encoding type by detecting the first <strong>1000</strong> bytes of the CSV file, as a best practice, you should prepare CSV file which encoding type is <code>ANSI</code> or <code>UTF-8</code>.</li>
+<li>If you want to insert a CSV file, you'd better open the CSV file in sublime and copy the file path, after you choose the sobject that you want to insert records, this tool will automatically get the file path from the clipboard</li>
+</ul><h2>
+<a name="proxy" class="anchor" href="#proxy"><span class="octicon octicon-link"></span></a>Proxy</h2>
+
+<p>Refer to <a href="http://docs.python-requests.org/en/latest/user/advanced/#proxies">Request Proxies</a></p>
+
+<p>...</p>
+
+<h1>
+<a name="configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h1>
+
+<h2>
+<a name="settings---completions" class="anchor" href="#settings---completions"><span class="octicon octicon-link"></span></a>Settings - Completions</h2>
+
+<p>With these settings, after we input characters described in below, sublime will automatically show the completions after character.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="p">{</span>
+    <span class="c1">// Auto completion after these characters</span>
+    <span class="s2">"auto_complete_triggers"</span><span class="o">:</span> <span class="p">[{</span>
+        <span class="s2">"characters"</span><span class="o">:</span> <span class="s2">".&lt;="</span><span class="p">,</span>
+        <span class="s2">"selector"</span><span class="o">:</span> <span class="s2">"source.java"</span>
+    <span class="p">},</span> <span class="p">{</span>
+        <span class="s2">"characters"</span><span class="o">:</span> <span class="s2">"&lt;: ="</span><span class="p">,</span>
+        <span class="s2">"selector"</span><span class="o">:</span> <span class="s2">"text.html - source"</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2>
+<a name="sublimeapex-settings---default" class="anchor" href="#sublimeapex-settings---default"><span class="octicon octicon-link"></span></a>SublimeApex Settings - Default</h2>
+
+<p>Because you can't edit the default setting, however, if you want to change these settings, you should open <code>SublimeApex &gt; Settings &gt; Setting - User</code> and put all your change here.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="p">{</span>
+
+    <span class="c1">// Indicate whether add project name time suffix</span>
+    <span class="c1">// When this setting value is true, you create a new project at yestoday and you refresh </span>
+    <span class="c1">// it's code today, a new project folder will be created to keep the refreshed code</span>
+    <span class="c1">// Two methods to fix this bug:</span>
+    <span class="c1">//     1. Set this setting value to false, </span>
+    <span class="c1">//     2. Create new project every day.</span>
+    <span class="c1">// It depends on your choice.</span>
+    <span class="s2">"keep_project_name_time_suffix"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+
+    <span class="c1">// Indicate whether print session id, maybe you need this session id</span>
+    <span class="c1">// for other purpose</span>
+    <span class="s2">"output_session_info"</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+
+    <span class="c1">// Indicate whether keep local history history</span>
+    <span class="s2">"keep_local_change_history"</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+
+    <span class="c1">// Every time when you save component and error happened, the console will be open.</span>
+    <span class="c1">// When you edit the code according to the error message, this flag is used to indicate</span>
+    <span class="c1">// whether the console will be hidden automatically</span>
+    <span class="s2">"hidden_console_on_modify"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+
+    <span class="c1">// Sometimes, you may want to develop package, so you need to just download the code </span>
+    <span class="c1">// in the allowed packages, because package name is unique in the whole salesforce org, </span>
+    <span class="c1">// so I put it here but not in project property</span>
+    <span class="s2">"allowed_packages"</span><span class="o">:</span> <span class="p">[</span><span class="s2">"sinaweibo"</span><span class="p">,</span> <span class="s2">"twitter"</span><span class="p">,</span> <span class="s2">"facebook"</span><span class="p">],</span>
+
+    <span class="c1">// Indicate whether download StaticResource body, it is very time-consuming.</span>
+    <span class="c1">// If you open this functionality and your StaticResources are very large</span>
+    <span class="c1">// It may stop your work</span>
+    <span class="s2">"get_static_resource_body"</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+
+    <span class="c1">// Indicate whether disable sobject fields completion</span>
+    <span class="s2">"disable_fields_completion"</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+
+    <span class="c1">// Indicate whether disable Relationship field completion</span>
+    <span class="s2">"disable_relationship_completion"</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+
+    <span class="c1">// Indicate whether disable picklist value completion</span>
+    <span class="s2">"disable_picklist_value_completion"</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+
+    <span class="c1">// Indicate whether disable keyword completion</span>
+    <span class="s2">"disable_keyword_completion"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+
+    <span class="c1">// Indicate whether display both field name and field label for sobject field completion,</span>
+    <span class="c1">// If set false, it means just display field name</span>
+    <span class="s2">"display_field_name_and_label"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+
+    <span class="c1">// Bulk API batch size and batch bytes</span>
+    <span class="c1">// Maximum 10000 rows per batch</span>
+    <span class="c1">// Maximum 1000000 bytes per batch</span>
+    <span class="s2">"maximum_batch_size"</span><span class="o">:</span> <span class="mi">10000</span><span class="p">,</span>
+    <span class="s2">"maximum_batch_bytes"</span><span class="o">:</span> <span class="mi">1000000</span><span class="p">,</span>
+
+    <span class="c1">// Log Levels for anonymous code</span>
+    <span class="s2">"anonymous_log_levels"</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">"log_category"</span><span class="o">:</span> <span class="s2">"Apex_Code"</span><span class="p">,</span>
+            <span class="s2">"log_level"</span><span class="o">:</span> <span class="s2">"Finest"</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">"log_category"</span><span class="o">:</span> <span class="s2">"Apex_Profiling"</span><span class="p">,</span>
+            <span class="s2">"log_level"</span><span class="o">:</span> <span class="s2">"Info"</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">"log_category"</span><span class="o">:</span> <span class="s2">"Callout"</span><span class="p">,</span>
+            <span class="s2">"log_level"</span><span class="o">:</span> <span class="s2">"Info"</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">"log_category"</span><span class="o">:</span> <span class="s2">"DB"</span><span class="p">,</span>
+            <span class="s2">"log_level"</span><span class="o">:</span> <span class="s2">"Info"</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">"log_category"</span><span class="o">:</span> <span class="s2">"Validation"</span><span class="p">,</span>
+            <span class="s2">"log_level"</span><span class="o">:</span> <span class="s2">"Info"</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">"log_category"</span><span class="o">:</span> <span class="s2">"Workflow"</span><span class="p">,</span>
+            <span class="s2">"log_level"</span><span class="o">:</span> <span class="s2">"Info"</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+
+
+    <span class="p">...</span> 
+
+    <span class="c1">// Components Directory</span>
+    <span class="c1">// folder is the output folder name, you can change it to anything you want</span>
+    <span class="c1">// The other two attributes shouldn't be changed</span>
+    <span class="s2">"components"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"ApexClass"</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">"folder"</span><span class="o">:</span> <span class="s2">"classes"</span><span class="p">,</span> <span class="c1">// Directory Name</span>
+            <span class="s2">"body"</span><span class="o">:</span> <span class="s2">"Body"</span><span class="p">,</span> <span class="c1">// Meatadata Name of Component</span>
+            <span class="s2">"extension"</span><span class="o">:</span> <span class="s2">".cls"</span> <span class="c1">// Output File Extendsion</span>
+        <span class="p">},</span>
+
+        <span class="s2">"ApexTrigger"</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">"folder"</span><span class="o">:</span> <span class="s2">"triggers"</span><span class="p">,</span>
+            <span class="s2">"body"</span><span class="o">:</span> <span class="s2">"Body"</span><span class="p">,</span>
+            <span class="s2">"extension"</span><span class="o">:</span> <span class="s2">".trigger"</span>
+        <span class="p">},</span>
+
+        <span class="s2">"ApexComponent"</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">"folder"</span><span class="o">:</span> <span class="s2">"components"</span><span class="p">,</span>
+            <span class="s2">"body"</span><span class="o">:</span> <span class="s2">"Markup"</span><span class="p">,</span>
+            <span class="s2">"extension"</span><span class="o">:</span> <span class="s2">".component"</span>
+        <span class="p">},</span>
+
+        <span class="s2">"ApexPage"</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">"folder"</span><span class="o">:</span> <span class="s2">"pages"</span><span class="p">,</span>
+            <span class="s2">"body"</span><span class="o">:</span> <span class="s2">"Markup"</span><span class="p">,</span>
+            <span class="s2">"extension"</span><span class="o">:</span> <span class="s2">".page"</span>
+        <span class="p">},</span>
+
+        <span class="s2">"StaticResource"</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">"folder"</span><span class="o">:</span> <span class="s2">"staticresources"</span><span class="p">,</span>
+            <span class="s2">"body"</span><span class="o">:</span> <span class="s2">"Body"</span><span class="p">,</span>
+            <span class="s2">"extension"</span><span class="o">:</span> <span class="s2">".resource"</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2>
+<a name="sublimeapex-settings---user" class="anchor" href="#sublimeapex-settings---user"><span class="octicon octicon-link"></span></a>SublimeApex Settings - User</h2>
+
+<p>because default setting is the plugin default setting, In order to prevent that plugin update override your projects configurations and any other customization setting, you'd better put them at here.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="p">{</span>
+    <span class="s2">"projects"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"sandbox-org-dev1"</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">"default"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">"login_url"</span><span class="o">:</span> <span class="s2">"https://test.salesforce.com"</span><span class="p">,</span>
+            <span class="s2">"password"</span><span class="o">:</span> <span class="s2">"password"</span><span class="p">,</span>
+            <span class="s2">"username"</span><span class="o">:</span> <span class="s2">"username@org.com.dev1"</span>
+        <span class="p">},</span>
+        <span class="s2">"pro-org"</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">"default"</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">"login_url"</span><span class="o">:</span> <span class="s2">"https://login.salesforce.com"</span><span class="p">,</span>
+            <span class="s2">"password"</span><span class="o">:</span> <span class="s2">"password"</span><span class="p">,</span>
+            <span class="s2">"username"</span><span class="o">:</span> <span class="s2">"username@org.com"</span><span class="p">,</span>
+            <span class="s2">"security_token"</span><span class="o">:</span> <span class="s2">"*****"</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">"workspace"</span><span class="o">:</span> <span class="s2">"C:/Users/Administrator/Dropbox/workspace"</span><span class="p">,</span>
+    <span class="s2">"keep_local_change_history"</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">"keep_project_name_time_suffix"</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">"hidden_console_on_modify"</span><span class="o">:</span> <span class="kc">false</span>
+<span class="p">}</span>
+</pre></div>
+
+<ul>
+<li>
+<strong>default</strong>: there should be only one default active project</li>
+<li>
+<strong>login_url</strong>: sandbox is <code>https://test.salesforce.com</code>, production is <code>https://login.salesforce.com</code>
+</li>
+<li>
+<strong>username</strong>: login confidential</li>
+<li>
+<strong>password</strong>: login confidential</li>
+<li>
+<strong>security_token</strong>: If have, just put it here, if not, you can remove this attr or left it empty</li>
+</ul><h2>
+<a name="key-bindings---default" class="anchor" href="#key-bindings---default"><span class="octicon octicon-link"></span></a>Key Bindings - Default</h2>
+
+<p>Here are the all key bindings to corresponding command, you can customize them according to your habit.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="p">[</span>
+    <span class="c1">// Switch Project</span>
+    <span class="p">{</span><span class="s2">"keys"</span><span class="o">:</span> <span class="p">[</span><span class="s2">"alt+s"</span><span class="p">],</span> <span class="s2">"command"</span><span class="o">:</span> <span class="s2">"switch_project"</span><span class="p">},</span>
+
+    <span class="c1">// Download all code and save them to new project</span>
+    <span class="p">{</span><span class="s2">"keys"</span><span class="o">:</span> <span class="p">[</span><span class="s2">"alt+f5"</span><span class="p">],</span> <span class="s2">"command"</span><span class="o">:</span> <span class="s2">"new_project"</span><span class="p">},</span>
+
+    <span class="c1">// Refresh Folder</span>
+    <span class="p">{</span><span class="s2">"keys"</span><span class="o">:</span> <span class="p">[</span><span class="s2">"alt+r"</span><span class="p">,</span><span class="s2">"alt+f"</span><span class="p">],</span> <span class="s2">"command"</span><span class="o">:</span> <span class="s2">"refresh_folder"</span><span class="p">},</span>
+
+    <span class="p">...</span>
+<span class="p">]</span>
+</pre></div>
+
+<h2>
+<a name="key-bindings---user" class="anchor" href="#key-bindings---user"><span class="octicon octicon-link"></span></a>Key Bindings - User</h2>
+
+<p>If you have your own shortcut key convention, you should put it here</p>
+
+<div class="highlight highlight-javascript"><pre><span class="p">[</span>
+    <span class="c1">// Switch Project</span>
+    <span class="p">{</span><span class="s2">"keys"</span><span class="o">:</span> <span class="p">[</span><span class="s2">"alt+s"</span><span class="p">],</span> <span class="s2">"command"</span><span class="o">:</span> <span class="s2">"switch_project"</span><span class="p">},</span>
+
+    <span class="c1">// Download all code and save them to new project</span>
+    <span class="p">{</span><span class="s2">"keys"</span><span class="o">:</span> <span class="p">[</span><span class="s2">"alt+f5"</span><span class="p">],</span> <span class="s2">"command"</span><span class="o">:</span> <span class="s2">"new_project"</span><span class="p">},</span>
+
+    <span class="c1">// Refresh Folder</span>
+    <span class="p">{</span><span class="s2">"keys"</span><span class="o">:</span> <span class="p">[</span><span class="s2">"alt+r"</span><span class="p">,</span><span class="s2">"alt+f"</span><span class="p">],</span> <span class="s2">"command"</span><span class="o">:</span> <span class="s2">"refresh_folder"</span><span class="p">},</span>
+
+    <span class="p">...</span>
+<span class="p">]</span>
+</pre></div>
+
+<h2>
+<a name="key-bindings---mousemap" class="anchor" href="#key-bindings---mousemap"><span class="octicon octicon-link"></span></a>Key Bindings - mousemap</h2>
+
+<div class="highlight highlight-javascript"><pre><span class="p">[</span>
+    <span class="c1">// Press Shift and Click Left Mouse for twice will open class file in the background</span>
+    <span class="p">{</span>
+        <span class="s2">"button"</span><span class="o">:</span> <span class="s2">"button1"</span><span class="p">,</span> <span class="s2">"count"</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"modifiers"</span><span class="o">:</span> <span class="p">[</span><span class="s2">"shift"</span><span class="p">],</span>
+        <span class="s2">"press_command"</span><span class="o">:</span> <span class="s2">"goto_component"</span><span class="p">,</span> 
+        <span class="s2">"press_args"</span><span class="o">:</span> <span class="p">{</span><span class="s2">"is_background"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span>
+    <span class="p">},</span>
+
+    <span class="c1">// Press Shift and Click Left Mouse for triple will open class file</span>
+    <span class="p">{</span>
+        <span class="s2">"button"</span><span class="o">:</span> <span class="s2">"button1"</span><span class="p">,</span> <span class="s2">"count"</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">"modifiers"</span><span class="o">:</span> <span class="p">[</span><span class="s2">"shift"</span><span class="p">],</span>
+        <span class="s2">"press_command"</span><span class="o">:</span> <span class="s2">"goto_component"</span><span class="p">,</span> 
+        <span class="s2">"press_args"</span><span class="o">:</span> <span class="p">{</span><span class="s2">"is_background"</span><span class="o">:</span> <span class="kc">false</span><span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+
+<ul>
+<li>
+<strong>button1</strong>: it means left mouse button</li>
+<li>
+<strong>button2</strong>: it means right mouse button</li>
+<li>
+<strong>count</strong>: count = 2 means double click, count = 3 means triple click</li>
+<li>
+<strong>modifiers</strong>: it means the assist key</li>
+<li>
+<strong>press_command</strong>: the bind command</li>
+<li>
+<strong>press_args</strong>: the bind command arguments</li>
+</ul><h1>
+<a name="supported-feature" class="anchor" href="#supported-feature"><span class="octicon octicon-link"></span></a>Supported Feature:</h1>
+
+<ul>
+<li>Muti-project management</li>
+<li>Configurable API Version</li>
+<li>View Code Coverage</li>
+<li>Create Debug Log</li>
+<li>Retrieve Debug Logs of Specified User</li>
+<li>Apex Code CRUD</li>
+<li>Apex Code Folder Refresh</li>
+<li>Run Test Class</li>
+<li>Apex Code Local History</li>
+<li>Execute Anonymous</li>
+<li>Execute Query</li>
+<li>Kinds of code completions, see sector "Completions"</li>
+<li>Generate All or Specified Sobject Workbook</li>
+<li>Generate Custom Field Workbook (Including Field Id)</li>
+<li>Generate Global Describe Workbook</li>
+<li>Generate Layout Avaiable PicklistValues</li>
+<li>Export Validation Rule and Workflow</li>
+<li>Quick Login to Home Page, Console, Debug Log...</li>
+<li>Quick View chosen Id in SFDC Web</li>
+<li>Quick View Apex Code in SFDC Web</li>
+<li>Backup All or Specified Sobjects in Muti-thread (Very Fast)</li>
+<li>Many common used snippets</li>
+<li>Manually Update Plugin</li>
+</ul><h1>
+<a name="dependency-lib" class="anchor" href="#dependency-lib"><span class="octicon octicon-link"></span></a>Dependency Lib</h1>
+
+<ul>
+<li><a href="https://github.com/kennethreitz/requests">requests</a></li>
+<li><a href="https://github.com/martinblech/xmltodict">xmltodict</a></li>
+</ul><h1>
+<a name="notes" class="anchor" href="#notes"><span class="octicon octicon-link"></span></a>Notes:</h1>
+
+<ol>
+<li><p>Every time when we refresh all apex code from server, the sobject field completions will be initiated at the same time.</p></li>
+<li><p>When we want to execute anonymous or query, we must choose any valid snippet in sublime and click the command.</p></li>
+<li><p>Actually, retrieve all just retrieve sobject and workflow metadata, because this process is largely time-consuming.</p></li>
+<li><p>Before we want to export validation rule or workflow, we must retrieve all, because we export the validation rule and workflow by parsing the metadata file.</p></li>
+<li><p>Every time we save the apex code, your local copy will be put into project/history path every minute.</p></li>
+<li><p>If we have two classes, the first one of which is the utility class for the second one, it would be best to open the first class so that we can see the variable completions when we edit the first one.</p></li>
+<li><p>When we want to run test, basically, your test result should be displayed as a new view.</p></li>
+<li><p>If we want to refresh the folder, we just need to click the SublimeApex &gt; Refresh Folder and then choose the folder we want to refresh.</p></li>
+<li><p>Before we update plugin, we should move your customized settings from "Settings - Default" to "Settings - User"</p></li>
+<li><p>Every time when you create a new view, it's default syntax is Apex.</p></li>
+<li><p>If you don't want to keep the local history change, you can set keep_local_change_history to false in the settings.</p></li>
+<li><p>If you want to output the session info, you can set output_session_info to true in the settings.</p></li>
+</ol>
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/xjsender">xjsender</a> can be found on <a href="https://github.com/xjsender/SublimeApex">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
